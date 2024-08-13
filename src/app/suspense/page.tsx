@@ -25,7 +25,9 @@ export const metadata: Metadata = {
 export default async function Page() {
 	await sleep(2000);
 	const data = await fetch(new URL(`${baseURl}/api`));
-	const json = await data.json();
+	const json = (await data.json()) || {
+		message: "Not Working",
+	};
 
 	return (
 		<div>
